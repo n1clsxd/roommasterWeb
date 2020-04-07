@@ -7,7 +7,7 @@ CREATE TABLE `company` (
  `parent_id` int(10) DEFAULT NULL,
  `type` char(1) DEFAULT 'M',
  `domain` VARCHAR(64) DEFAULT NULL,
- `active` TINYINT(1) DEFAULT '1',
+ `isActive` TINYINT(1) DEFAULT '1',
  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
  `changeDate` timestamp NULL DEFAULT NULL,
  PRIMARY KEY (`id`)

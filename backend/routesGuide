@@ -1,11 +1,11 @@
 empresa:
 
-(get) /company/byDomain
-(get) /company/byId
+(get) /company/byDomain OK
+(get) /company/byId OK
 
-(post) /company/create
+(post) /company/create OK
 
-(put) /company/edit
+(put) /company/edit OK
 
 (put) /company/softDelete
 (delete) /company/hardDelete
