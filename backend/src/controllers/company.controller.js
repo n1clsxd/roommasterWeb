@@ -26,16 +26,7 @@ exports.create = (req, res) => {
     })
 };
 
-exports.findAll = (req, res) => {
-    Company.getAll((err, data) => {
-      if (err)
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving customers."
-        });
-      else res.send(data);
-    });
-  };
+ 
 // Acha empresa pelo ID
 exports.findById = (req, res) => {
     console.log(req.params.id)
@@ -57,15 +48,16 @@ exports.findById = (req, res) => {
 
 // Acha empresa pelo dominio
 exports.findByDomain = (req, res) => {
-    Company.findById(req.params.domain, (err, data) =>{
+    console.log("searching by domain " + req.headers.domain)
+    Company.findByDomain(req.headers.domain, (err, data) =>{
         if (err) {
             if (err.kind === "not_found") {
               res.status(404).send({
-                message: `Not found Company with domain ${req.params.domain}.`
+                message: `Not found Company with domain ${req.headers.domain}.`
               });
             } else {
               res.status(500).send({
-                message: "Error retrieving Company with domain " + req.params.domain
+                message: "Error retrieving Company with domain " + req.headers.domain
               });
             }
           } else res.send(data);

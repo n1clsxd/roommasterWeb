@@ -28,20 +28,7 @@ Company.create = (company,result) => {
         result(null, {id: res.insertId, ...company})
     })
 }
-Company.getAll = result =>{
-    //console.log("procurando por", id)
-    //const query = `SELECT * FROM company`
 
-    sql.query(`SELECT * FROM company`, (err, res) =>{
-        console.log(err)
-        if(err) throw err;
-        
-        console.log("Search result get All: ")
-        console.log(res)
-        result(null, res)
-        return
-    })
-}
 
 
 Company.findByDomain = (domain, result) =>{

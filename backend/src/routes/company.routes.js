@@ -1,13 +1,13 @@
 module.exports = (server) =>{
     const company = require('../controllers/company.controller')
-    server.post("/company", company.create)
+    server.post("/company/create", company.create)
 
-    server.get("/company", company.findAll)
-    
-    server.get("/company/:id", company.findById)
+    //server.get("/company/all", company.findAll)
 
-    //server.get("/company/:domain", company.findByDomain)
+    server.get("/company/byId", company.findById)
 
-    server.delete("/company/:id", company.delete)
+    server.get("/company/byDomain", company.findByDomain)
+
+    server.delete("/company/delete", company.delete)
 
 }

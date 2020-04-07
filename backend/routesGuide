@@ -1,0 +1,52 @@
+empresa:
+
+(get) /company/byDomain
+(get) /company/byId
+
+(post) /company/create
+
+(put) /company/edit
+
+(put) /company/softDelete
+(delete) /company/hardDelete
+
+sala:
+
+(get) /room/listByCompanyId
+(get) /room/listByDomain
+
+(post) /room/create
+
+(put) /room/edit
+
+(put) /room/softDelete
+(delete) /room/hardDelete
+
+usuario:
+
+(get) /user/login
+(get) /user/listByCompanyId
+(get) /user/listByDomain
+
+(post) /user/create
+
+(put) /user/edit
+
+(put) /user/softDelete
+(delete) /user/hardDelete
+
+reserva:
+
+(get) /meeting/byRoomId
+(get) /meeting/byUserId
+(get) /meeting/byCompanyId
+(get) /meeting/byDomain
+
+(post) /meeting/create
+
+(put) /meeting/edit
+
+(put) /meeting/softDelete
+(delete) /meeting/hardDelete
+
+
