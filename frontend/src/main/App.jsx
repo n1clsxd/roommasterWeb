@@ -6,11 +6,11 @@ import React from 'react'
 import Test from './testComponent'
 import Menu from '../template/menu'
 import Company from '../components/company/company'
-
+import Login from '../components/login/Login'
 export default props => (
     <div>
         
-        <Company/>
+        <Login></Login>
 
 
     </div>

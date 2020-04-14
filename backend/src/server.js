@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 const express = require('express')
 
 const server = express()
-
+const allowCors = require('cors')
+server.use(allowCors())
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
 

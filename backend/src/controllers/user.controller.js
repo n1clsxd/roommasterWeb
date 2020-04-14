@@ -37,7 +37,7 @@ exports.login = (req, res) => {
                     message: "Error retrieving User with id " + credentials
                 });
             }
-        } else res.send(data);
+        } else res.status(200).send(data);
     })
 }
 
