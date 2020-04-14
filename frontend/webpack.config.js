@@ -4,18 +4,21 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: __dirname + '/public',
-    filename: './app.js'
+    filename: './app.js' //npm run production
   },
   devServer: {
     port: 8087,
     contentBase: './public'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      modules: __dirname + '/node_modules'
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: 'app.css' //href
     })
   ],
   module: {
@@ -26,7 +29,7 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['transform-object-rest-spread']
+          plugins: ['@babel/plugin-proposal-object-rest-spread']
         }
       },
       { //css

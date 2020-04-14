@@ -12,6 +12,7 @@ empresa:
 
 sala:
 
+(get) /room/byId
 (get) /room/listByCompanyId
 (get) /room/listByDomain
 

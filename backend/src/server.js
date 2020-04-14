@@ -6,15 +6,18 @@ const express = require('express')
 const server = express()
 
 server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({extended: true}))
+server.use(bodyParser.urlencoded({ extended: true }))
 
-server.get('/', (req,res) => {
-    res.json({hello :'World'})
+server.get('/', (req, res) => {
+    res.json({ hello: 'World' })
 })
 
 require('./routes/company.routes')(server)
+require('./routes/room.routes')(server)
+require('./routes/user.routes')(server)
 
 
-server.listen(port, () =>console.log(`Backend running on port ${port}.`))
+
+server.listen(port, () => console.log(`Backend running on port ${port}.`))
 
 module.exports = server
