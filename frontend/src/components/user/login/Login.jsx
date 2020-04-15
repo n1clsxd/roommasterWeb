@@ -57,7 +57,7 @@ export default class Login extends Component {
 
 
     }
-    handleChange(e, field) {
+    handleChange(e) {
 
         console.log(e.target.value)
         this.setState({ ...this.state, [e.target.name]: e.target.value, alert: { isVisible: false } })

@@ -20,12 +20,15 @@ User.create = (user, result) => {
 
     const query = `INSERT INTO user (${fields}) VALUES (${params})`
     sql.query(query, user, (err, res) => {
-        if (err) throw err;
-        console.log("Created user: ", { id: res.insertId, ...user })
-        console.log(user)
-        result(null, { id: res.insertId, ...user })
-
+        if (err) {
+            result(null, undefined)
+        } else {
+            console.log("Created user: ", { id: res.insertId, ...user })
+            result(null, { id: res.insertId, ...user })
+        };
     })
+
+
 }
 User.login = (credentials, result) => {
     let search = `\'${credentials.email}\' AND password = \'${credentials.password}\'`
