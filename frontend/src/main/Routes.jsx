@@ -1,11 +1,13 @@
 import React from 'react'
-import { Router, Route, Redirect, hashHistory } from 'react-router'
+import { BrowserRouter, Route, Redirect} from 'react-router-dom'
 
 import Login from '../components/login/Login'
+import Main from '../components/main/Main'
 export default props => (
-    <Router history={hashHistory}>
+    <BrowserRouter>
+
         <Route path='/login' component={Login} />
-        
-        {/* <Redirect from='*' to='/todos' /> */}
-    </Router>
+        <Route path='/main' component={Main} />
+        <Redirect from='*' to='/login' />
+    </BrowserRouter>
 )

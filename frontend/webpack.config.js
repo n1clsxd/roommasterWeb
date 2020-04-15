@@ -4,11 +4,13 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: __dirname + '/public',
-    filename: './app.js' //npm run production
+    filename: './app.js', //npm run production
+    publicPath: '/'
   },
   devServer: {
     port: 8087,
-    contentBase: './public'
+    contentBase: './public',
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', '.jsx'],

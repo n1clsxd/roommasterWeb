@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Alert} from 'react-bootstrap'
 
 
 export default props => (
@@ -11,6 +11,7 @@ export default props => (
             <Form.Control
                 name="loginEmail"
                 onChange={props.handleChange}
+                onClick={props.handleChange}
                 type="email"
                 placeholder="employee@company.com"
                 value={props.email} />
@@ -21,12 +22,14 @@ export default props => (
             <Form.Control
                 name="loginPassword"
                 onChange={props.handleChange}
+                onClick={props.handleChange}
                 type="password"
                 placeholder="p455w0rd"
                 value={props.password} />
         </Form.Group>
 
         <Form.Group>
+            <Alert show={props.isVisible} variant='danger'>{props.message}</Alert>
             <Button onClick={props.handleLogin}>Entrar</Button>
         </Form.Group>
 
