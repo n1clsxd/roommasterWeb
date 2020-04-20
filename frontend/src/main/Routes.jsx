@@ -13,6 +13,6 @@ export default props => (
         <Route path='/signup' component={Signup} />
         <Route path='/newcompany' component={CreateCompany} /> 
         <Route path='/main' component={Main} />
-        <Redirect from='*' to='/newcompany' />
+        {/* <Redirect from='*' to='/login' /> */}
     </BrowserRouter>
 )

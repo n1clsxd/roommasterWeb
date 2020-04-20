@@ -43,7 +43,8 @@ export default class Signup extends Component {
             "companyId": this.state.companyRadio,
             "name": this.state.signupName,
             "email": this.state.signupEmail,
-            "password": this.state.signupPassword
+            "password": this.state.signupPassword,
+            "role": 'U',
         }
         console.log(body)
         if (body.email == "" || body.password == "" || body.name == "") {
