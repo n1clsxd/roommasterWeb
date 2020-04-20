@@ -34,7 +34,8 @@ export default props => (
         </Form.Group>
 
         <Form.Group>
-            <Button>Novo Usuário</Button>
+            <Button name = 'redirect' value='/signup' onClick={props.handleChange}>Novo Usuário</Button>
+            <Button name ='redirect' value ='/newcompany' onClick={props.handleChange}>Nova Empresa</Button>
         </Form.Group>
     </Form>
 )

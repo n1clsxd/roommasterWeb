@@ -10,7 +10,7 @@ const User = function (user) {
 User.create = (user, result) => {
     console.log(user)
     let fields, params = ''
-    fields = `company_id, name, email, password`
+    fields = `company_id, name, email, password, role`
 
     params = ``
     for (var prop in user) {

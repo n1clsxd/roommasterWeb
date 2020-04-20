@@ -12,14 +12,16 @@ export default class Signup extends Component {
         this.state = {
             signupEmail: "",
             signupPassword: "",
-            signupName:"",
+            signupName: "",
+            signupCompany: undefined,
             redirect: "",
 
             alert: {
                 isVisible: false,
                 text: "",
                 variant: ""
-            }
+            },
+            radioList: [],
         }
         this.handleSignup = this.handleSignup.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -36,17 +38,21 @@ export default class Signup extends Component {
     }
     handleSignup() {
 
+        ////////////////
         let body = {
-            "companyId": 1,
+            "companyId": this.state.companyRadio,
             "name": this.state.signupName,
             "email": this.state.signupEmail,
             "password": this.state.signupPassword
         }
         console.log(body)
         if (body.email == "" || body.password == "" || body.name == "") {
-            
+
             this.handleAlert("Todos os campos devem ser preenchidos.")
+
+
         } else {
+            //this.handleAlert(body)
             let values = Object.values(body)
             axios.post(`${URL}/create`, body,{header:{'Content-Type' : 'application/json'}})
                 .then(response => {
@@ -64,16 +70,48 @@ export default class Signup extends Component {
 
 
     }
-    handleChange(e) {
+    getDomains() {
+        
+        let domain = this.state.signupEmail.split("@")
+        /////////////////////////////////
+        axios.get('http://localhost:8086/company/byDomain', { headers: { domain: domain[1] } })
+            .then(response => {
+                if (response.data[0]) {
+                    let list = []
+                    response.data.forEach((element, index) => {
+                        console.log(element)
+                        list.push([element.name,element.id])
+                    });
+                    this.setState({...this.state, radioList: list })
+                } else {
+                    this.setState({...this.state, radioList:[] })
+                    this.handleAlert("Esse dominio nao esta cadastrado")
+                }
 
-        console.log(e.target.value)
-        this.setState({ ...this.state, [e.target.name]: e.target.value, alert: { isVisible: false } })
+            }).catch(e => {
+                console.log("Erro: " + e)
+            })
+    }
+    handleChange(e) {
+        this.setState({...this.state, radioList: [] })
+        if (e.target.name != "signupEmail") {
+            this.getDomains()
+        }
+
+        this.setState({
+            ...this.state,
+            [e.target.name]: e.target.value,
+            alert: { isVisible: false },
+
+        })
+
     }
 
     render() {
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
+        console.log(this.state.radioList.isVisible)
         return (
             <div>
                 <h1>Novo Usuário</h1>
@@ -86,9 +124,10 @@ export default class Signup extends Component {
                     isVisible={this.state.alert.isVisible}
                     message={this.state.alert.text}
                     variant={this.state.alert.variant}
+                    radioList={this.state.radioList}
 
                 />
-                
+
             </div>
         )
     }

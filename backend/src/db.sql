@@ -38,6 +38,7 @@ CREATE TABLE `user` (
  `name` VARCHAR(45) DEFAULT NULL,
  `email` VARCHAR(45) UNIQUE DEFAULT NULL,
  `password` VARCHAR(256) DEFAULT NULL,
+ `role` CHAR(1) DEFAULT `U`,
  PRIMARY KEY (`id`),
  FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 );

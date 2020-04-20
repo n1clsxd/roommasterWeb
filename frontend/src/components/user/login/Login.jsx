@@ -58,8 +58,7 @@ export default class Login extends Component {
 
     }
     handleChange(e) {
-
-        console.log(e.target.value)
+        console.log(e.target.name)
         this.setState({ ...this.state, [e.target.name]: e.target.value, alert: { isVisible: false } })
     }
 
@@ -75,7 +74,6 @@ export default class Login extends Component {
                     password={this.state.loginPassword}
                     handleChange={this.handleChange}
                     handleLogin={this.handleLogin}
-
                     isVisible={this.state.alert.isVisible}
                     message={this.state.alert.text}
                     variant={this.state.alert.variant}

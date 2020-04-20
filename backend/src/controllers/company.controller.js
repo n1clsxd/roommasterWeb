@@ -7,12 +7,6 @@ exports.create = (req, res) => {
     });
   }
 
-  // const company = new Company({
-  //     name: req.body.name,
-  //     domain: req.body.domain,
-  //     type: req.body.type,
-  //     parentId: req.body.parentId
-  // })
   console.log(typeof req.body)
   console.log(req.body)
   const company = req.body

@@ -21,10 +21,13 @@ Company.create = (company,result) => {
 
     const query = `INSERT INTO company ${fields} VALUES (${params})`
     sql.query(query, company, (err, res) =>{
-        if(err) throw err;
-        console.log("Created company: ", {id: res.insertId, ...company})
-        console.log(company)
-        result(null, {id: res.insertId, ...company})
+        if (err) {
+            result(null, undefined)
+        } else {
+            console.log("Created company: ", { id: res.insertId, ...company })
+            result(null, { id: res.insertId, ...company })
+        };
+        
     })
 }
 
@@ -32,7 +35,6 @@ Company.create = (company,result) => {
 
 Company.findByDomain = (domain, result) =>{
     const query = `SELECT * FROM company  WHERE domain = \'${domain}\' and isActive = true`
-
     sql.query(query, (err, res) =>{
         if(err) throw err;
         console.log("Search result: ")
